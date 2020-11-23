@@ -7,7 +7,17 @@ namespace Labb1FizzBuzz
         static void Main(string[] args)
         {
             Program program = new Program();
-            program.FizzBuzzRun();
+            while (true)
+            {
+                var userInput = program.UserInput();
+                Console.Clear();
+
+                program.FizzBuzzRun(userInput);
+
+                Console.WriteLine("Press any button to continue...");
+                Console.ReadKey();
+                Console.Clear();
+            }
         }
 
         public int UserInput()
@@ -23,6 +33,7 @@ namespace Labb1FizzBuzz
                 }
                 catch
                 {
+                    Console.Clear();
                     Console.WriteLine("Invalid number");
                 }
             }
@@ -30,18 +41,11 @@ namespace Labb1FizzBuzz
             return inputNumber;
         }
 
-        public void FizzBuzzRun()
+        public void FizzBuzzRun(int number)
         {
-            while (true)
+            for (int i = 1; i <= number; i++)
             {
-                var userInput = UserInput();
-                Console.Clear();
-                for (int i = 1; i <= userInput; i++)
-                {
-                    Console.WriteLine(GetFizzBuzzResult(i));
-                }
-
-                Console.ReadKey();
+                Console.WriteLine(GetFizzBuzzResult(i));
             }
         }
         
@@ -51,6 +55,10 @@ namespace Labb1FizzBuzz
             {
                 return "FizzBuzz";
             }
+            else if (number == 42)
+            {
+                return "Answer to the Ultimate Question of Life, the Universe, and Everything";
+            }
             else if (number % 3 == 0)
             {
                 return "Fizz";
@@ -58,10 +66,6 @@ namespace Labb1FizzBuzz
             else if (number % 5 == 0)
             {
                 return "Buzz";
-            }
-            else if (number == 42)
-            {
-                return "Answer to the Ultimate Question of Life, the Universe, and Everything";
             }
             return number.ToString();
         }

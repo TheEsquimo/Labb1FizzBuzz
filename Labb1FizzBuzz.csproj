@@ -5,4 +5,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Labb1FizzBuzzTests\**" />
+    <EmbeddedResource Remove="Labb1FizzBuzzTests\**" />
+    <None Remove="Labb1FizzBuzzTests\**" />
+  </ItemGroup>
+
 </Project>
