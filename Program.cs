@@ -6,7 +6,6 @@ namespace Labb1FizzBuzz
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
         }
     }
 }
