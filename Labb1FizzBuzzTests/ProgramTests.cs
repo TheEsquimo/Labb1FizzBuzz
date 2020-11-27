@@ -9,6 +9,20 @@ namespace Labb1FizzBuzzTests
     public class ProgramTests
     {
         [TestMethod]
+        public void TestUserInput()
+        {
+            Program program = new Program();
+            IConsole mockConsole = new MockConsole();
+            using (StringWriter stringWriter = new StringWriter())
+            {
+                Console.SetOut(stringWriter);
+                var expected = string.Format("Pick a number between 1-299:{0}Pick a number between 1-299:{0}Pick a number between 1-299:{0}Invalid input{0}Pick a number between 1-299:{0}", Environment.NewLine);
+                program.UserInput(mockConsole);
+                Assert.AreEqual(expected, stringWriter.ToString());
+            }
+        }
+
+        [TestMethod]
         public void TestFizzBuzzRun()
         {
             using (StringWriter stringWriter = new StringWriter())

@@ -9,7 +9,7 @@ namespace Labb1FizzBuzz
             Program program = new Program();
             while (true)
             {
-                var userInput = program.UserInput();
+                var userInput = program.UserInput(new ReadConsole());
                 Console.Clear();
 
                 program.FizzBuzzRun(userInput);
@@ -20,24 +20,22 @@ namespace Labb1FizzBuzz
             }
         }
 
-        public int UserInput()
+        public int UserInput(IConsole console)
         {
             int inputNumber = 0;
             while (inputNumber < 1 || inputNumber >= 300)
             {
                 Console.WriteLine("Pick a number between 1-299:");
-                string input = Console.ReadLine();
+                string input = console.ReadLine();
                 try
                 {
                     inputNumber = int.Parse(input);
                 }
                 catch
                 {
-                    Console.Clear();
-                    Console.WriteLine("Invalid number");
+                    Console.WriteLine("Invalid input");
                 }
             }
-                
             return inputNumber;
         }
 
